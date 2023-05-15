@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/models/cart.dart';
+import 'package:store/models/order_list.dart';
 import 'package:store/utils/app_routes.dart';
 import 'package:store/views/cart_view.dart';
+import 'package:store/views/orders_page.dart';
 import 'package:store/views/product_detail.dart';
 import 'package:store/views/products_overview_page.dart';
 import 'models/product_list.dart';
@@ -28,18 +30,25 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           //parametro de gerenciamento de estado Cart passado para todas as ramificações na àrvore de widgets
           create: (_) => Cart(),
-        )
+        ),
+        ChangeNotifierProvider(
+          //criando a instância do orderlist
+          create: (_) => OrderList(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
             primaryColor: Color.fromRGBO(0, 0, 128, 1),
             accentColor: Colors.deepOrange,
             fontFamily: 'Lato'),
-        home: ProductsOverviewPage(),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {AppRoutes.PRODUCT_DETAIL: (_) => ProductDetail(),
-        AppRoutes.CART_VIEW:(_) => CartView()},
+        //home: ProductsOverviewPage(),
+        routes: {
+          AppRoutes.HOME: (_) => ProductsOverviewPage(),
+          AppRoutes.PRODUCT_DETAIL: (_) => ProductDetail(),
+          AppRoutes.CART_VIEW: (_) => CartView(),
+          AppRoutes.ORDERS: (_) => OrdersViews(),
+        },
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:store/models/cart.dart';
 import 'package:store/utils/app_routes.dart';
 import 'package:store/views/cart_view.dart';
+import 'package:store/widgets/app_drawer.dart';
 import '../models/product_list.dart';
 import '../widgets/badgee.dart';
 import '../widgets/product_grid.dart';
@@ -85,6 +86,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
             .primaryColor,
       ),
       body: ProductGrid(showFavoriteOnly: _showFavoriteOnly),
+      drawer: AppDrawer(),
     );
   }
 }
