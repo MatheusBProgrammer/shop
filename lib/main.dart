@@ -6,6 +6,8 @@ import 'package:store/utils/app_routes.dart';
 import 'package:store/views/cart_view.dart';
 import 'package:store/views/orders_page.dart';
 import 'package:store/views/product_detail.dart';
+import 'package:store/views/product_form_view.dart';
+import 'package:store/views/product_view.dart';
 import 'package:store/views/products_overview_page.dart';
 import 'models/product_list.dart';
 
@@ -38,9 +40,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-            primaryColor: Color.fromRGBO(0, 0, 128, 1),
+            primaryColor: Colors.black54,
             accentColor: Colors.deepOrange,
-            fontFamily: 'Lato'),
+            fontFamily: 'Lato', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.deepOrange)),
         debugShowCheckedModeBanner: false,
         //home: ProductsOverviewPage(),
         routes: {
@@ -48,6 +50,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.PRODUCT_DETAIL: (_) => ProductDetail(),
           AppRoutes.CART_VIEW: (_) => CartView(),
           AppRoutes.ORDERS: (_) => OrdersViews(),
+          AppRoutes.PRODUCTS: (_) => ProductsView(),
+          AppRoutes.PRODUCTS_FORM: (_) => ProductsFormView(),
         },
       ),
     );

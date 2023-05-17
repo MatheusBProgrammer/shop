@@ -3,7 +3,6 @@ import 'package:store/utils/app_routes.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -29,6 +28,14 @@ class AppDrawer extends StatelessWidget {
             title: Text('Pedidos'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(AppRoutes.ORDERS);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.edit),
+            title: Text('Gerenciar Produtos'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(AppRoutes.PRODUCTS);
             },
           ),
         ],

@@ -40,7 +40,6 @@ class CartItemWidget extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).pop(true);
-
                       },
                       child: Text(
                         'Remover',
