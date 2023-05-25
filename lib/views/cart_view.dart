@@ -47,29 +47,7 @@ class CartView extends StatelessWidget {
                       backgroundColor: Theme.of(context).primaryColor,
                     ),
                     const Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        Provider.of<OrderList>(context, listen: false)
-                            .addOrder(cart);
-                        cart.clear();
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Theme.of(context).colorScheme.secondary),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'Comprar',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
+                    _cartButton(cart: cart)
                   ],
                 ),
               );
@@ -84,5 +62,57 @@ class CartView extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _cartButton extends StatefulWidget {
+  const _cartButton({
+    super.key,
+    required this.cart,
+  });
+
+  final Cart cart;
+
+  @override
+  State<_cartButton> createState() => _cartButtonState();
+}
+
+class _cartButtonState extends State<_cartButton> {
+  bool _isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return _isLoading
+        ? CircularProgressIndicator()
+        : TextButton(
+            onPressed: widget.cart.itemsCount == 0
+                //verificação para que não mande pedidos vazios para o banco de dados
+                ? () {}
+                : () async {
+                    setState(() => _isLoading = true);
+                    //await para que o carrinho apenas seja limpo quando limpar o pedido
+                    await Provider.of<OrderList>(context, listen: false)
+                        .addOrder(widget.cart);
+                    setState(() => _isLoading = false);
+
+                    widget.cart.clear();
+                  },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(
+                  Theme.of(context).colorScheme.secondary),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+            child: Text(
+              'Comprar',
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          );
   }
 }

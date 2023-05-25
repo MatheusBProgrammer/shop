@@ -7,7 +7,7 @@ final dummyProducts = [
     description: 'A red shirt - it is pretty red!',
     price: 29.99,
     imageUrl:
-    'S',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Red-t-shirt-.jpg/640px-Red-t-shirt-.jpg',
   ),
   Product(
     id: 'p2',

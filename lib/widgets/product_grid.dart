@@ -15,7 +15,7 @@ class ProductGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     //necessário definir que se trata de um <ProductList>bn
     final provider = Provider.of<ProductList>(context);
-    //a exibição aqui dependerá do valor boleano recebido como parâmetro de products_overview_page.dart
+    //a exibição aqui dependerá do valor boleano recebido como parâmetro de
     //##########################
     //caso o valor sejá true, ele mostrará o menu de favoritos, que foi definido no product_list
     final List<Product> loadedProducts =
@@ -38,7 +38,10 @@ class ProductGrid extends StatelessWidget {
               //está passando para seus filhos um objeto carregado da lista, pelo índice, que será um objeto Product
               //quando o value atualizar, o child será modificado
               value: loadedProducts[index],
-              //o objeto específico é passado pelo value, não mais como parâmetro
+              //O objeto específico é passado pelo value, não mais como parâmetro.
+              //
+              //No proximo trecho de código, ja que estamos passando um valor Product, pois o productlist é uma lista de produtos,
+              //devemos fornecer um Provider.of<Product>, mesmo que nao esteja presente no main, pois este estará se relacionando com o 'value'
               child: ProductGridItem(),
             ));
   }

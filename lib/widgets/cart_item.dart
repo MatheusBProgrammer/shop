@@ -58,7 +58,7 @@ class CartItemWidget extends StatelessWidget {
                   ],
                 ));
       },
-      //chame do dismisseble
+      //chave do dismisseble
       key: ValueKey(cartItem.id),
       //direção do dismissible
       direction: DismissDirection.endToStart,

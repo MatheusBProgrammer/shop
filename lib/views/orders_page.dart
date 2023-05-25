@@ -9,19 +9,35 @@ class OrdersViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final OrderList orders = Provider.of<OrderList>(context);
     return Scaffold(
-      appBar: AppBar(
+      appBar:
+      AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: Text('Meus pedidos'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: orders.itemsCount,
-        itemBuilder: (_, index) {
-          return OrderWidget(order: orders.items[index]);
+      body:FutureBuilder(
+        future:  Provider.of<OrderList>(context,listen: false).loadOrders(),
+        builder: (_,snapshot){
+          //se estiver esperando o estado da coneção
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator(),);
+          }else if(snapshot.error != null){
+            return Center(child: Text('Ocorreu um erro'),);
+          }
+          else{
+            return Consumer<OrderList>(
+              builder:(ctx,orders,child) => ListView.builder(
+                itemCount: orders.itemsCount,
+                itemBuilder: (_, index) {
+                  return OrderWidget(order: orders.items[index]);
+                },
+              ),
+            );
+          }
         },
       ),
+
       drawer: AppDrawer(),
     );
   }

@@ -10,7 +10,7 @@ class ProductDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //recebimento de argumento por pushNamed para um Widget que não recebe via construtor
+    //recebimento de argumento por pushNamed para um Widget que não recebe via construtor(product_grid_item)
     final Product product =
         ModalRoute.of(context)?.settings.arguments as Product;
     return Scaffold(
