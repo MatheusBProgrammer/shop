@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-            primaryColor: Colors.black54,
+            primaryColor: Colors.black,
             accentColor: Colors.deepOrange,
             fontFamily: 'Lato',
             colorScheme: ColorScheme.fromSwatch()

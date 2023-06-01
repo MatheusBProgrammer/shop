@@ -20,17 +20,7 @@ class _AuthPageState extends State<AuthPage> {
           //background
           Container(
             //estilização do container
-            decoration: const BoxDecoration(
-                //uso de degradê como background
-                gradient: LinearGradient(
-                    //Início do Degradê/Gradiente
-                    begin: Alignment.topCenter,
-                    //final do degradê
-                    end: Alignment.bottomCenter,
-                    colors: [
-                  Color.fromRGBO(255, 105, 220, 0.5),
-                  Color.fromRGBO(0, 0, 128, 0.5),
-                ])),
+            decoration: BoxDecoration(color: Colors.black87)
           ),
           Container(
             width: double.infinity,
@@ -41,10 +31,10 @@ class _AuthPageState extends State<AuthPage> {
               children: [
                 //fundo do formulário
                 Container(
+
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(10)),
-                  height: MediaQuery.of(context).size.height / 2,
                   width: MediaQuery.of(context).size.width / 1.2,
                   padding: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.width / 50,
@@ -66,19 +56,7 @@ class _AuthPageState extends State<AuthPage> {
                           offset: Offset(-10,-10),
                       )
                       ]*/ /*),*/
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text('Tela de Login',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              letterSpacing: 3,
-                              fontSize: MediaQuery.of(context).size.width / 15,
-                              fontFamily: 'Anton',
-                              color: Colors.black38)),
-                      AuthForm()
-                    ],
-                  ),
+                  child: AuthForm(),
                 )
               ],
             ),

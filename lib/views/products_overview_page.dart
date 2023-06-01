@@ -56,6 +56,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         centerTitle: true,
         title: const Text(
           'Minha Loja',
@@ -108,7 +109,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
                     child: child!,
                   ))
         ],
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.black,
       ),
       body: _isLoading
           ? Center(

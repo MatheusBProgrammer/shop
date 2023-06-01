@@ -146,9 +146,7 @@ class _ProductsFormViewState extends State<ProductsFormView> {
           appBar: AppBar(
             title: Text('Formulário de Produto'),
             centerTitle: true,
-            backgroundColor: Theme
-                .of(context)
-                .primaryColor,
+            backgroundColor: Colors.black,
             actions: [
               IconButton(onPressed: submitForm, icon: Icon(Icons.save))
             ],

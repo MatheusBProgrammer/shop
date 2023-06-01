@@ -62,9 +62,12 @@ class ProductItem extends StatelessWidget {
                           listen: false,
                         ).removeProduct(product);
                       } catch (error) {
-                        msg.showSnackBar(SnackBar(content: Text(error.toString()),));
+                        msg.showSnackBar(
+                          SnackBar(
+                            content: Text(error.toString()),
+                          ),
+                        );
                       }
-
                     }
                   });
                 },

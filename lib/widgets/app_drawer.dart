@@ -12,7 +12,7 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Colors.black,
             title: Text('Bem vindo!'),
             //retira o menu da pagina de drawer
             automaticallyImplyLeading: false,

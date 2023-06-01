@@ -174,7 +174,7 @@ class ProductList with ChangeNotifier {
       //após verificar se faz parte da lista, ele deleta no Firebase
       final response = await http.delete(
         //é necessário interpolar com o Id para alterar o produto específico
-        Uri.parse('$_baseUrl/${product.id}json?auth=$token'),
+        Uri.parse('$_baseUrl/${product.id}.json?auth=$token'),
         //objeto; convertido para json
       );
 
@@ -183,7 +183,9 @@ class ProductList with ChangeNotifier {
       if (response.statusCode >= 400) {
         //restaura o item e notifica o usuário
         _items.insert(index, product);
+        print(response.statusCode);
         notifyListeners();
+
 
         //lançamento de exceção:
         throw HttpException(

@@ -80,11 +80,18 @@ class ProductGridItem extends StatelessWidget {
             Navigator.of(context)
                 .pushNamed(AppRoutes.PRODUCT_DETAIL, arguments: product);
           },
-          child: Image.network(
+          child:Hero(
+            tag: product.id,
+            child: FadeInImage(placeholder: AssetImage('assets/images/load.jpg'),
+              image: NetworkImage(product.imageUrl),
+              fit: BoxFit.cover,
+            ),
+          ),
+          /* Image.network(
             product.imageUrl,
             //extensão da imagem
             fit: BoxFit.cover,
-          ),
+          ),*/
         ),
       ),
     );
